@@ -1,0 +1,10 @@
+insert into product (id, name, price, stock, producer) values (1, 'Venison - Ground', 971, 70, 'Koepp Inc');
+insert into product (id, name, price, stock, producer) values (2, 'Plasticspoonblack', 658, 78, 'Littel, Swaniawski and Roob');
+insert into product (id, name, price, stock, producer) values (3, 'Sage - Rubbed', 177, 50, 'Franecki-Grady');
+insert into product (id, name, price, stock, producer) values (4, 'Mcgillicuddy Vanilla Schnap', 102, 75, 'Feeney, Koelpin and Haley');
+insert into product (id, name, price, stock, producer) values (5, 'Pasta - Cannelloni, Sheets, Fresh', 295, 63, 'Kulas, Rolfson and Kutch');
+insert into product (id, name, price, stock, producer) values (6, 'Rosemary - Fresh', 914, 50, 'Pollich-Barton');
+insert into product (id, name, price, stock, producer) values (7, 'Cookies Almond Hazelnut', 553, 64, 'Wisozk-Borer');
+insert into product (id, name, price, stock, producer) values (8, 'Trout - Rainbow, Frozen', 370, 63, 'Bashirian-Pollich');
+insert into product (id, name, price, stock, producer) values (9, 'Cornstarch', 105, 71, 'Effertz Inc');
+insert into product (id, name, price, stock, producer) values (10, 'Wine - Red, Gamay Noir', 943, 66, 'Olson and Sons');

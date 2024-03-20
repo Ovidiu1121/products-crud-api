@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6905f5d9-9558-4abc-b7ea-6f124122d1ff": {
+      "ProjectGuid": "6905f5d9-9558-4abc-b7ea-6f124122d1ff",
+      "DisplayName": "ProductsCrudApi",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
