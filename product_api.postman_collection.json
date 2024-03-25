@@ -27,6 +27,22 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GetByNameRoute",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetByNameQuery",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }

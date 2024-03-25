@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ProductsCrudApi.Data;
+using ProductsCrudApi.Dto;
 using ProductsCrudApi.Products.Model;
 using ProductsCrudApi.Products.Repository.interfaces;
 
@@ -23,7 +24,63 @@ namespace ProductsCrudApi.Products.Repository
             return await _context.Products.ToListAsync();
         }
 
-       
+        public Task<List<int>> GetAllPriceAsync()
+        {
+            throw new NotImplementedException();
+        }
 
+        public async Task<Product> GetByNameAsync(string name)
+        {
+            return await _context.Products.FirstOrDefaultAsync(obj => obj.Name.Equals(name));  
+        }
+
+        public async Task<List<int>> GetIdOrderedByPriceDescAsync()
+        {
+            var products=await _context.Products
+                .OrderByDescending(obj => obj.Price)
+                .Select(obj => obj.Id)
+                .ToListAsync();
+
+            return products;
+        }
+
+        public async Task<Product> CreateProduct(CreateProductRequest request)
+        {
+            var product = _mapper.Map<Product>(request);
+
+            _context.Products.Add(product);
+
+            await _context.SaveChangesAsync();
+
+            return product;
+        }
+
+        public async Task<Product> UpdateProduct(int id, UpdateProductRequest request)
+        {
+
+            var product = await _context.Products.FindAsync(id);
+
+            product.Name= request.Name ?? product.Name;
+            product.Price= request.Price ?? product.Price;
+            product.Stock=request.Stock ?? product.Stock;
+            product.Producer=request.Producer ?? product.Producer;
+
+            _context.Products.Update(product);
+
+            await _context.SaveChangesAsync();
+
+            return product;
+        }
+
+        public async Task<Product> DeleteProductById(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            _context.Products.Remove(product);
+
+            await _context.SaveChangesAsync();
+
+            return product;
+        }
     }
 }
