@@ -24,11 +24,6 @@ namespace ProductsCrudApi.Products.Repository
             return await _context.Products.ToListAsync();
         }
 
-        public Task<List<int>> GetAllPriceAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<Product> GetByNameAsync(string name)
         {
             return await _context.Products.FirstOrDefaultAsync(obj => obj.Name.Equals(name));  
@@ -60,7 +55,6 @@ namespace ProductsCrudApi.Products.Repository
 
             var product = await _context.Products.FindAsync(id);
 
-            product.Name= request.Name ?? product.Name;
             product.Price= request.Price ?? product.Price;
             product.Stock=request.Stock ?? product.Stock;
             product.Producer=request.Producer ?? product.Producer;
@@ -81,6 +75,11 @@ namespace ProductsCrudApi.Products.Repository
             await _context.SaveChangesAsync();
 
             return product;
+        }
+
+        public async Task<Product> GetByIdAsync(int id)
+        {
+            return await _context.Products.FirstOrDefaultAsync(obj => obj.Id.Equals(id));
         }
     }
 }

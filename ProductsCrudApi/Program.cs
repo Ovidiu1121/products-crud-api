@@ -3,10 +3,17 @@ using Microsoft.EntityFrameworkCore;
 using ProductsCrudApi.Data;
 using ProductsCrudApi.Products.Repository;
 using ProductsCrudApi.Products.Repository.interfaces;
+using ProductsCrudApi.Products.Service;
+using ProductsCrudApi.Products.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
 
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("Default")!,
@@ -18,16 +25,10 @@ builder.Services.AddFluentMigratorCore()
         .WithGlobalConnectionString(builder.Configuration.GetConnectionString("Default"))
         .ScanIn(typeof(Program).Assembly).For.Migrations())
     .AddLogging(lb => lb.AddFluentMigratorConsole());
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
+builder.Services.AddScoped<IProductCommandService, ProductCommandService>();
+builder.Services.AddScoped<IProductQueryService, ProductQueryService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

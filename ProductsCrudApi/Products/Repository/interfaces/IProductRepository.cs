@@ -7,7 +7,7 @@ namespace ProductsCrudApi.Products.Repository.interfaces
     {
         Task<IEnumerable<Product>> GetAllAsync();
         Task<Product> GetByNameAsync(string name);
-        Task<List<int>> GetAllPriceAsync();
+        Task<Product> GetByIdAsync(int id);
         Task<List<int>> GetIdOrderedByPriceDescAsync();
         Task<Product> CreateProduct(CreateProductRequest request);
         Task<Product> UpdateProduct(int id, UpdateProductRequest request);
