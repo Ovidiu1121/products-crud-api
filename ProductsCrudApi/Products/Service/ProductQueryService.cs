@@ -27,12 +27,48 @@ namespace ProductsCrudApi.Products.Service
             return products;
         }
 
+        public async Task<Product> GetById(int id)
+        {
+            Product product = await _repository.GetByIdAsync(id);
+
+            if (product == null)
+            {
+                throw new ItemDoesNotExist(Constants.PRODUCT_DOES_NOT_EXIST);
+            }
+
+            return product;
+        }
+
         public async Task<Product> GetByName(string name)
         {
             
             Product product= await _repository.GetByNameAsync(name);
 
             if(product == null)
+            {
+                throw new ItemDoesNotExist(Constants.PRODUCT_DOES_NOT_EXIST);
+            }
+
+            return product;
+        }
+
+        public async Task<Product> GetByPrice(int price)
+        {
+            Product product = await _repository.GetByPriceAsync(price);
+
+            if (product == null)
+            {
+                throw new ItemDoesNotExist(Constants.PRODUCT_DOES_NOT_EXIST);
+            }
+
+            return product;
+        }
+
+        public async Task<Product> GetByStock(int stock)
+        {
+            Product product = await _repository.GetByStokAsync(stock);
+
+            if (product == null)
             {
                 throw new ItemDoesNotExist(Constants.PRODUCT_DOES_NOT_EXIST);
             }

@@ -23,6 +23,11 @@ namespace ProductsCrudApi.Products.Service
                 throw new InvalidPrice(Constants.INVALID_PRICE);
             }
 
+            if (productRequest.Stock<0)
+            {
+                throw new InvalidStock(Constants.INVALID_STOCK);
+            }
+
             Product product = await _repository.GetByNameAsync(productRequest.Name);
 
             if (product!=null)
@@ -40,6 +45,11 @@ namespace ProductsCrudApi.Products.Service
             if (productRequest.Price<0)
             {
                 throw new InvalidPrice(Constants.INVALID_PRICE);
+            }
+
+            if (productRequest.Stock<0)
+            {
+                throw new InvalidStock(Constants.INVALID_STOCK);
             }
 
             Product product = await _repository.GetByIdAsync(id);

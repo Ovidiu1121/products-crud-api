@@ -81,5 +81,15 @@ namespace ProductsCrudApi.Products.Repository
         {
             return await _context.Products.FirstOrDefaultAsync(obj => obj.Id.Equals(id));
         }
+
+        public async Task<Product> GetByPriceAsync(int price)
+        {
+            return await _context.Products.FirstOrDefaultAsync(obj => obj.Price.Equals(price));
+        }
+
+        public async Task<Product> GetByStokAsync(int stock)
+        {
+            return await _context.Products.FirstOrDefaultAsync(obj => obj.Stock.Equals(stock));
+        }
     }
 }
